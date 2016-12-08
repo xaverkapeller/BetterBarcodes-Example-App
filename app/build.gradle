@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.triplet.play'
+
+final travisVersionCode = hasProperty('version_code') ? property('version_code').toInteger() : 1
+final travisVersionName = hasProperty('version_name') ? property('version_name') : '0.1.0.0'
+
+final travisKeystorePassword = hasProperty('keystore_password') ? property('keystore_password') : ''
+final travisKeyAlias = hasProperty('key_alias') ? property('key_alias') : ''
+final travisKeyPassword = hasProperty('key_password') ? property('key_password') : ''
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.1'
+    defaultConfig {
+        applicationId "com.github.wrdlbrnft.betterbarcodes.example.app"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode travisVersionCode
+        versionName travisVersionName
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file('release.jks')
+            storePassword travisKeystorePassword
+            keyAlias travisKeyAlias
+            keyPassword travisKeyPassword
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.github.wrdlbrnft:better-barcodes:0.2.0.22'
+}
+
+play {
+    track = 'production'
+    jsonFile = rootProject.file('keys.json')
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.github.wrdlbrnft.betterbarcodes.example.app.ViewerFragment"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.github.wrdlbrnft.betterbarcodes.views.writer.BarcodeView
+            android:id="@+id/barcode_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:format="code128|qr_code|aztec"
+            app:text="@string/fragment_viewer_initial_barcode_text">
+
+            <TextView
+                android:id="@+id/barcode_instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="@string/fragment_reader_barcode_instructions"
+                android:textColor="@android:color/black"
+                android:visibility="invisible"/>
+
+        </com.github.wrdlbrnft.betterbarcodes.views.writer.BarcodeView>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:hint="@string/fragment_viewer_barcode_hint">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="80"
+                android:text="@={fragment.barcodeText}"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/fragment_viewer_header_formats"/>
+
+        <CheckBox
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.qrCodeEnabled}"
+            android:text="@string/fragment_viewer_format_qr_code"/>
+
+        <CheckBox
+            android:id="@+id/code_128"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.code128Enabled}"
+            android:text="@string/fragment_viewer_format_code_128"/>
+
+        <CheckBox
+            android:id="@+id/aztec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.aztecEnabled}"
+            android:text="@string/fragment_viewer_format_aztec"/>
+
+    </LinearLayout>
+
+</layout>

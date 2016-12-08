@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="fragment"
+            type="com.github.wrdlbrnft.betterbarcodes.example.app.ReaderFragment"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.github.wrdlbrnft.betterbarcodes.views.reader.BarcodeReaderView
+            android:id="@+id/barcode_reader"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:format="qr_code"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/fragment_reader_header_formats"/>
+
+        <CheckBox
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.qrCodeEnabled}"
+            android:text="@string/fragment_reader_format_qr_code"/>
+
+        <CheckBox
+            android:id="@+id/code_128"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.code128Enabled}"
+            android:text="@string/fragment_reader_format_code_128"/>
+
+        <CheckBox
+            android:id="@+id/aztec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:checked="@={fragment.aztecEnabled}"
+            android:text="@string/fragment_reader_format_aztec"/>
+
+    </LinearLayout>
+
+</layout>

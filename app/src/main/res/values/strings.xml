@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- General -->
+    <string name="app_name">BetterBarcodes</string>
+
+    <!-- Activity Main-->
+    <string name="activity_main_title">BetterBarcodes</string>
+    <string name="activity_main_button_read">Read a Barcode</string>
+    <string name="activity_main_button_view">Show a barcode</string>
+
+    <!-- Fragment Reader -->
+    <string name="fragment_reader_barcode_instructions">Swipe left or right to switch to a different type of barcode.</string>
+    <string name="fragment_reader_header_formats">Formats</string>
+    <string name="fragment_reader_format_qr_code">QR Code</string>
+    <string name="fragment_reader_format_code_128">Code 128</string>
+    <string name="fragment_reader_format_aztec">Aztec</string>
+    <string name="fragment_reader_barcode_dialog_title">Barcode found!</string>
+
+    <!-- Fragment Viewer -->
+    <string name="fragment_viewer_header_formats">Formats</string>
+    <string name="fragment_viewer_format_qr_code">QR Code</string>
+    <string name="fragment_viewer_format_code_128">Code 128</string>
+    <string name="fragment_viewer_format_aztec">Aztec</string>
+    <string name="fragment_viewer_initial_barcode_text">Hello World!</string>
+    <string name="fragment_viewer_barcode_hint">Enter text here…</string>
+
+</resources>
