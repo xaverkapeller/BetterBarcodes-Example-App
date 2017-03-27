@@ -10,7 +10,7 @@ final travisKeyPassword = hasProperty('key_password') ? property('key_password')
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.1'
+    buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "com.github.wrdlbrnft.betterbarcodes.example.app"
         minSdkVersion 14
@@ -40,19 +40,19 @@ android {
         release {
             minifyEnabled true
             signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.github.wrdlbrnft:better-barcodes:0.2.0.22'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.wrdlbrnft:better-barcodes:0.2.0.34'
 }
 
 play {
-    track = 'production'
+    track = 'beta'
     jsonFile = rootProject.file('keys.json')
 }
