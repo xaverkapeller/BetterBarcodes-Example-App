@@ -8,6 +8,7 @@ android:
   - build-tools-25.0.2
   - android-25
   - extra-android-m2repository
+  - extra-android-support
 
 before_install:
   - openssl aes-256-cbc -d -k $SECRET_FILES_KEY -in release.jks.enc -out release.jks
