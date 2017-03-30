@@ -91,7 +91,7 @@ public class ReaderFragment extends Fragment implements BarcodeReader.Callback {
     @Override
     public void onResume() {
         super.onResume();
-        mBinding.barcodeReader.startPreview();
+        mBinding.barcodeReader.start();
     }
 
     @Override
