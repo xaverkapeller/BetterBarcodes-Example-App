@@ -33,13 +33,13 @@ public class ReaderFragment extends Fragment implements BarcodeReader.Callback {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = FragmentReaderBinding.inflate(inflater, container, false);
         return mBinding.getRoot();
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBinding.setFragment(this);
         mBinding.barcodeReader.setCameraPermissionHandler(new PermissionHandler.Adapter() {
@@ -112,18 +112,8 @@ public class ReaderFragment extends Fragment implements BarcodeReader.Callback {
         final AlertDialog dialog = new AlertDialog.Builder(getContext())
                 .setTitle(R.string.fragment_reader_barcode_dialog_title)
                 .setMessage(text)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int button) {
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        mBinding.barcodeReader.startScanning();
-                    }
-                })
+                .setPositiveButton(android.R.string.ok, (dialogInterface, button) -> dialogInterface.dismiss())
+                .setOnDismissListener(dialogInterface -> mBinding.barcodeReader.startScanning())
                 .create();
         dialog.show();
     }

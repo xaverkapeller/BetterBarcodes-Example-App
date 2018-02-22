@@ -1,20 +1,19 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.triplet.play'
 
-final travisVersionCode = hasProperty('version_code') ? property('version_code').toInteger() : 1
-final travisVersionName = hasProperty('version_name') ? property('version_name') : '0.1.0.0'
-
-final travisKeystorePassword = hasProperty('keystore_password') ? property('keystore_password') : ''
-final travisKeyAlias = hasProperty('key_alias') ? property('key_alias') : ''
-final travisKeyPassword = hasProperty('key_password') ? property('key_password') : ''
+final travisKeystorePassword = System.getenv('KEYSTORE_PASSWORD') ?: ''
+final travisKeyAlias = System.getenv('KEY_ALIAS') ?: ''
+final travisKeyPassword = System.getenv('KEY_PASSWORD') ?: ''
+final travisVersionCode = System.getenv('TRAVIS_BUILD_NUMBER')?.toInteger() ?: 0
+final travisVersionName = "0.3.0.${System.getenv('TRAVIS_BUILD_NUMBER') ?: 0}"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.github.wrdlbrnft.betterbarcodes.example.app"
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode travisVersionCode
         versionName travisVersionName
     }
@@ -43,13 +42,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.wrdlbrnft:better-barcodes:0.2.0.34'
+    compile 'com.github.wrdlbrnft:better-barcodes:0.3.0.44'
 }
 
 play {
